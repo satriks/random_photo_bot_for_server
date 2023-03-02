@@ -25,6 +25,12 @@ async def process_help_command(message: Message):
                          'я пришлю тебе картинку')
 
 
+@dp.message(Command(commands='delmenu'))
+async def del_main_menu(message: Message, bot: Bot):
+    await bot.delete_my_commands()
+    await message.answer(text='Кнопка "Menu" удалена')
+
+
 @dp.message()
 async def send_echo(message: Message):
     response = requests.get('https://picsum.photos/1200/800')
